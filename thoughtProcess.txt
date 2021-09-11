@@ -11,3 +11,11 @@ After inspecting https://en.wikipedia.org/wiki/Help:Table#Minimalist_table I've 
 This is good because now I can just find a list of all table tags with beatifulSoup.
 
 Next step is to collect a bunch of sample wiki pages and make them into tests.
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody about where will i find all the <tr>
+
+what module?
+url to html.
+html to list of possible numerical columns with custom datastructures
+filters the non numerical columns.
+numerical column to image file.
