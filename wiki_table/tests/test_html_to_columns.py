@@ -21,13 +21,28 @@ class TestHtmlToColumns(unittest.TestCase):
         columns = html_to_columns(f1_2021)
         # will not include th that are 'clearly index'
         # but will include th at some other row
-        self.assertEqual(len(columns), 78)
-        self.assertEqual(columns[0].name, 'Entrant')
-        self.assertEqual(columns[5].name, 'No.')
-        self.assertEqual(len(columns[5].content), 21)
-        self.assertEqual(columns[5].content[0], '7')
-        self.assertEqual(len(columns[6].content), 21)
-        self.assertEqual(columns[6].content[0], 'Kimi Räikkönen[b]')
-        self.assertEqual(len(columns[36].content), 21)
-        self.assertEqual(columns[36].content[0], '224.5')
 
+        self.assertEqual(len(columns), 83)
+        self.assertEqual(columns[0].name, 'Entrant')
+        self.assertEqual(columns[4].name, 'No.')
+        self.assertEqual(len(columns[4].content), 21)
+        self.assertEqual(columns[4].content[0], '7')
+        self.assertEqual(len(columns[5].content), 21)
+        self.assertEqual(columns[5].content[0], 'Kimi Räikkönen[b]')
+
+        # test missing data removed
+        self.assertEqual(len(columns[15].content), 13)
+
+        # also test successfully excluded footer or not
+        self.assertEqual(len(columns[54].content), 21)
+        self.assertEqual(columns[54].content[0], '224.5')
+
+        # columns[57] (Constructor) has content with colspan 2,
+        # this must be delt with correctly.
+        self.assertEqual(columns[58].content[1], '3F')
+
+        # to test if successfully excluded footer or not.
+        self.assertEqual(len(columns[0].content), 10)
+
+        # to test if multi-column empty cell is mistakely taken as footer
+        self.assertEqual(len(columns[20].content), 2)
