@@ -39,7 +39,9 @@ class TestFilterNumColumns(unittest.TestCase):
         columns = filter_num_columns(columns)
         content_num = [1.46, 1.485, 1.485, 1.524, 1.552, 1.58, 1.58, 
                         1.595, 1.605, 1.62, 1.65, 1.65, 1.66, 1.66]
-        self.assertEqual(columns, Column('Height', content_num))
+        self.assertEqual(len(columns), 1)
+        self.assertEqual(columns[0].name, 'Height')
+        self.assertEqual(columns[0].content, content_num)
 
     def test_date(self):
         content = [
@@ -70,5 +72,17 @@ class TestFilterNumColumns(unittest.TestCase):
     def test_normal_number(self):
         content = ['7', '.88', '99', '10', '22', '14', '31', '5', '18', '16', '55', '9', '47', '3']
         columns = [Column('No.', content)]
-        columns_after = filter_num_columns(columns)
-        self.assertEqual(columns, columns_after)
+        columns = filter_num_columns(columns)
+        content_num = [7, .88, 99, 10, 22, 14, 31, 5, 18, 16, 55, 9, 47, 3]
+        self.assertEqual(len(columns), 1)
+        self.assertEqual(columns[0].name, 'No.')
+        self.assertEqual(columns[0].content, content_num)
+
+    def test_number_followed_by_time(self):
+        content = ['3 (4:00)']
+        columns = [Column('time', content)]
+        columns = filter_num_columns(columns)
+        content_num = [3]
+        self.assertEqual(len(columns), 1)
+        self.assertEqual(columns[0].name, 'time')
+        self.assertEqual(columns[0].content, content_num)
