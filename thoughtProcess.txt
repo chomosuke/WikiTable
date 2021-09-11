@@ -16,7 +16,7 @@ about where will i find all the <tr>
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
 https://www.w3schools.com/tags/tag_thead.asp
 
-what module?
+what steps?
 url to html.
 html to list of possible numerical columns with custom datastructures
 filters the non numerical columns.
