@@ -70,10 +70,10 @@ class TestFilterNumColumns(unittest.TestCase):
         self.assertEqual(columns, [])
 
     def test_normal_number(self):
-        content = ['7', '.88', '99', '10', '22', '14', '31', '5', '18', '16', '55', '9', '47', '3']
+        content = ['7', '.88', '0.99', '10e-3', '+22', '14', '31', '5', '18', '16', '55', '9', '47', '3']
         columns = [Column('No.', content)]
         columns = filter_num_columns(columns)
-        content_num = [7, .88, 99, 10, 22, 14, 31, 5, 18, 16, 55, 9, 47, 3]
+        content_num = [7, .88, .99, .01, 22, 14, 31, 5, 18, 16, 55, 9, 47, 3]
         self.assertEqual(len(columns), 1)
         self.assertEqual(columns[0].name, 'No.')
         self.assertEqual(columns[0].content, content_num)

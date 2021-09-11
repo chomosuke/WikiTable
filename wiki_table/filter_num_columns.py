@@ -1,9 +1,9 @@
-from bs4.element import whitespace_re
 from column import Column
 
 import re
-num = re.compile("[0-9]*\.?[0-9]+")
-start_with_num = re.compile("[0-9]*\.?[0-9]+.*")
+# from https://stackoverflow.com/questions/638565/parsing-scientific-notation-sensibly
+num = re.compile("^[+\-]?\d*(?:\.\d+)?(?:[eE][+\-]?\d+)?")
+start_with_num = re.compile("^[+\-]?\.?\d+.*$")
 integer = re.compile("^[0-9]+$")
 whitespace = re.compile('^ *$')
 
@@ -14,7 +14,8 @@ def filter_num_columns(columns: list[Column]) -> list[Column]:
     columns = list(filter(is_num_column, columns))
     for column in columns:
         for i in range(len(column.content)):
-            column.content[i] = float(num.match(column.content[i]).group(0))
+            match = num.match(column.content[i]).group(0)
+            column.content[i] = float(match)
     return columns
 
 def is_num_column(column: Column) -> bool:
