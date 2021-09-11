@@ -2,4 +2,12 @@ First comes the choice of languages. I have already written crawler in python an
 
 Then comes the choice of tests. I have never written unit test in python before so this will be a novelty for me. I looked at three testing libraries for python: unittest, doctest and pytest. doctest seems very exciting and fabulous to use it's like very cool and fancy, but it isn't the most straightforward and might require a bit of a learning curve. pytest feels pretty much like unittest but like more scattered? I like my test in the same place instead of test with the code they're testing so, I chose unittest as my testing framework.
 
-Next step now is to look at spec of Wikipedia so I can identify a table properly
+Next step now is to look at same html table example on Wikipedia so I can identify a table properly.
+
+Would totally do merge request and the whole git flow thingy btw but i'm not working with other people so i'm directly pushing onto master.
+
+After inspecting https://en.wikipedia.org/wiki/Help:Table#Minimalist_table I've found that all table in wikipedia is enclosed within the <table> tab, which might be very duh for someone familiar with HTML but I wasn't so I had to be sure.
+
+This is good because now I can just find a list of all table tags with beatifulSoup.
+
+Next step is to collect a bunch of sample wiki pages and make them into tests.
