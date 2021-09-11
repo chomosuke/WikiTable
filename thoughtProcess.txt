@@ -1,0 +1,5 @@
+First comes the choice of languages. I have already written crawler in python and know a little bit of the library: beatifulSoup. I also know library that plot number from my machine learning course. Hence I'll choose python as my language of choice. Personally I prefer a statically typed language (rust is my favorite). But python is a very convenient language to use and it is massively popular so it'll be easy to find answer on stackoverflow and it'll be easy to find any desired libraries etc.
+
+Then comes the choice of tests. I have never written unit test in python before so this will be a novelty for me. I looked at three testing libraries for python: unittest, doctest and pytest. doctest seems very exciting and fabulous to use it's like very cool and fancy, but it isn't the most straightforward and might require a bit of a learning curve. pytest feels pretty much like unittest but like more scattered? I like my test in the same place instead of test with the code they're testing so, I chose unittest as my testing framework.
+
+Next step now is to look at spec of Wikipedia so I can identify a table properly
