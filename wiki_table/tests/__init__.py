@@ -1,0 +1,1 @@
+# test will be ran from wiki_table, this file exist to make tests a module so unittest can discover it.
