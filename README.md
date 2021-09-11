@@ -1,0 +1,1 @@
+to run all tests, do `python -m unittest discover wiki_table/test`

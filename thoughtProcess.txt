@@ -12,7 +12,9 @@ This is good because now I can just find a list of all table tags with beatifulS
 
 Next step is to collect a bunch of sample wiki pages and make them into tests.
 
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody about where will i find all the <tr>
+about where will i find all the <tr>
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
+https://www.w3schools.com/tags/tag_thead.asp
 
 what module?
 url to html.
