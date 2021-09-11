@@ -13,7 +13,7 @@ class TestHtmlToColumns(unittest.TestCase):
         self.assertEqual(columns[2].name, 'Date')
         self.assertEqual(columns[2].content[0], '20 May 1922')
         self.assertEqual(columns[3].name, 'Place')
-        self.assertEqual(columns[3].content[0], 'Simsbury')
+        self.assertEqual(columns[3].content[0], 'Simsbury[1]')
         for column in columns:
             self.assertEqual(len(column.content), 56)
 
@@ -27,7 +27,7 @@ class TestHtmlToColumns(unittest.TestCase):
         self.assertEqual(len(columns[5].content), 21)
         self.assertEqual(columns[5].content[0], '7')
         self.assertEqual(len(columns[6].content), 21)
-        self.assertEqual(columns[6].content[0], 'Kimi Räikkönen')
+        self.assertEqual(columns[6].content[0], 'Kimi Räikkönen[b]')
         self.assertEqual(len(columns[36].content), 21)
         self.assertEqual(columns[36].content[0], '224.5')
 
