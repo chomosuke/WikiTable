@@ -1,6 +1,4 @@
-from typing import NamedTuple
+from column import Column
 
-Column = NamedTuple('Column', [('name', str), ('content', [str])])
-
-def html_to_columns(html: str) -> list(Column):
+def html_to_columns(html: str) -> list[Column]:
     pass
