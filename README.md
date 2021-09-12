@@ -1,6 +1,11 @@
-to run all tests, do `python -m unittest discover wiki_table`
+This python program rely on library: `matplotlib` and `bs4`.<br>
+Please pip install them bofere you run the program.
 
-What is a numeric column?
-Sometimes numeric column can have strange unit attached with them, it's impossible to predict all possible units or postfix, hence we can only exclude the column that start with numbers but isn't numerical. The only kind of column of that sort I can think of is time and date.
+This program is written with python 3.9
 
-Therefore, any column with all of it's cell starting with a number that's can't be interpreted as time or date is a numeric column.
+to run all tests, do `python -m unittest discover wiki_table`<br>
+to run theh program do `python wiki_table`
+
+I've written my thought process before I started to coding at: [thoughtProcess.txt](thoughtProcess.txt)<br>
+I've extended the requirement slightly before I started coding at: [requirement.md](requirement.md)<br>
+I've defined a numeric column before I started working on filter_num_columns.py at: [what_is_numeric.txt](what_is_numeric.txt)
