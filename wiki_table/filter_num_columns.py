@@ -30,7 +30,7 @@ def is_num_column(column: Column) -> bool:
                 parse_res = parser.parse(cell, fuzzy_with_tokens=True)
                 # parsed successfully
 
-                # check if parsed number into time
+                # check if accidentally parsed a integer into datetime
                 for token in parse_res[1]:
                     cell = cell.replace(token, '')
                 if integer.match(cell):
@@ -38,13 +38,15 @@ def is_num_column(column: Column) -> bool:
 
                 # remove white space from fuzzy_tokens
                 tokens = list(filter(lambda token : whitespace.match(token) == None, parse_res[1]))
+
+                # check if the start of the string has been parsed into datetime
                 if len(tokens) == 1:
                     unparsed = parse_res[1][0]
                     if unparsed == cell[-len(unparsed):]:
-                        # the start of the string has been parsed to time
+                        # the start of the string has been parsed to datetime
                         return False
                 elif len(tokens) == 0:
-                    # entire string has been parsed to time
+                    # entire string has been parsed to datetime
                     return False
             except:
                 # does not parse to date

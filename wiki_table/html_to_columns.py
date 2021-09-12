@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 def html_to_columns(html: str) -> list[Column]:
     soup = BeautifulSoup(html, 'html.parser')
 
-    # class exist to filter out tables in references
+    # only wikitable class to filter out tables in references
     tables = soup.find_all('table', class_='wikitable')
 
     all_columns = []
@@ -24,7 +24,6 @@ def html_to_columns(html: str) -> list[Column]:
             first_line_ths = trs[0].find_all('th', recursive=False)
 
             need_fill_columns = []
-            # assume the first tr only contains th
             for th in first_line_ths:
                 # in case there are nested headers
                 if get_span(th, 'colspan') == 1:
@@ -56,11 +55,11 @@ def html_to_columns(html: str) -> list[Column]:
                     break
         else:
             # there's no header for this table
-            # use the first row to create header
+            # use the first row to create columns
             for _ in trs[0].find_all(recursive=False):
                 columns.append(Column('', []))
 
-        # we need a datastructure to keep all the columns with rowspan > 1
+        # we need a datastructure to keep all the cells with rowspan > 1
         # now i've written that down, it's actually pretty easy
         # an array recording the excess number of rowspan of the last cell of the columns
         rowspans = []
