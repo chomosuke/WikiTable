@@ -17,7 +17,7 @@ class TestFilterNumColumns(unittest.TestCase):
             'Williams Racing']
         columns = [Column('Entrant', content)]
         columns = filter_num_columns(columns)
-        self.assertEqual(columns, [])
+        self.assertEqual(len(columns), 0)
 
     def test_number_with_weird_postfix(self):
         content = [
@@ -61,13 +61,13 @@ class TestFilterNumColumns(unittest.TestCase):
             '29 March 1941']
         columns = [Column('Height', content)]
         columns = filter_num_columns(columns)
-        self.assertEqual(columns, [])
+        self.assertEqual(len(columns), 0)
 
     def test_time(self):
         content = ['4:20']
         columns = [Column('time', content)]
         columns = filter_num_columns(columns)
-        self.assertEqual(columns, [])
+        self.assertEqual(len(columns), 0)
 
     def test_normal_number(self):
         content = ['7', '.88', '0.99', '10e-3', '+22', '14', '31', '5', '18', '16', '55', '9', '47', '3']
@@ -86,3 +86,9 @@ class TestFilterNumColumns(unittest.TestCase):
         self.assertEqual(len(columns), 1)
         self.assertEqual(columns[0].name, 'time')
         self.assertEqual(columns[0].content, content_num)
+
+    def test_empty_column(self):
+        content = []
+        columns = [Column('empty', content)]
+        columns = filter_num_columns(columns)
+        self.assertEqual(len(columns), 0)

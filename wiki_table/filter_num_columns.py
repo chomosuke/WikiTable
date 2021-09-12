@@ -19,6 +19,10 @@ def filter_num_columns(columns: list[Column]) -> list[Column]:
     return columns
 
 def is_num_column(column: Column) -> bool:
+
+    if len(column.content) == 0:
+        return False # an empty column isn't a num column
+
     # looking for a cell to set is_num = False
     for cell in column.content:
         if start_with_num.match(cell):
