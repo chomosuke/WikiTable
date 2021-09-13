@@ -51,4 +51,4 @@ class TestHtmlToColumns(unittest.TestCase):
         # the bug is that rowspans records will not be updated if the loop exit before 
         # all the rowspans records are reached
         self.assertEqual(len(columns[80].content), 10)
-        self.assertEqual(columns[80].content[9], 3)
+        self.assertEqual(columns[80].content[8], '3')

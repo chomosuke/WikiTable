@@ -106,6 +106,12 @@ def html_to_columns(html: str) -> list[Column]:
                 j += 1
                 i += 1
 
+            # update rest of rowspans
+            while j < len(rowspans):
+                rowspans[j] -= 1
+                j += 1
+                # I am assuming malformed table doesn't exist on wikipedia.
+
         # filter out possible index
         # for length <= 3, can't definitively know if it's index or just coincidence
         isIndex = len(columns[0].content) > 3
