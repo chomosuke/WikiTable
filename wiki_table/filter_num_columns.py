@@ -4,7 +4,7 @@ import re
 # from https://stackoverflow.com/questions/638565/parsing-scientific-notation-sensibly
 num = re.compile("^[+\-]?\d*(?:\.\d+)?(?:[eE][+\-]?\d+)?")
 start_with_num = re.compile("^[+\-]?\.?\d+.*$")
-integer = re.compile("^[0-9]+$")
+num_endstr = re.compile("^[+\-]?\d*(?:\.\d+)?(?:[eE][+\-]?\d+)?$")
 whitespace = re.compile('^ *$')
 
 # the hope is that this parser is powerful enough to recognize all possible date or time format
@@ -33,7 +33,7 @@ def is_num_column(column: Column) -> bool:
                 # check if accidentally parsed a integer into datetime
                 for token in parse_res[1]:
                     cell = cell.replace(token, '')
-                if integer.match(cell):
+                if num_endstr.match(cell): # num but guaranteed to match the whole string
                     continue
 
                 # remove white space from fuzzy_tokens

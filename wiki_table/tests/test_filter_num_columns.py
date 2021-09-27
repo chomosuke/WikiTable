@@ -53,7 +53,7 @@ class TestFilterNumColumns(unittest.TestCase):
             '6 September 1926',
             '3 July 1928',
             '5 August 1928',
-            '18 August 1929',
+            '18 August 1929 (other stuff)',
             '12 June 1932',
             '7 August 1932',
             '7 August 1932',
@@ -92,3 +92,10 @@ class TestFilterNumColumns(unittest.TestCase):
         columns = [Column('empty', content)]
         columns = filter_num_columns(columns)
         self.assertEqual(len(columns), 0)
+
+    def test_number_parsed_to_date(self):
+        content = ['362.5']
+        columns = [Column('look like time', content)]
+        columns = filter_num_columns(columns)
+        self.assertEqual(len(columns), 1)
+        self.assertEqual(columns[0].content, [362.5])

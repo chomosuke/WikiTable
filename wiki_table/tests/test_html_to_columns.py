@@ -46,3 +46,9 @@ class TestHtmlToColumns(unittest.TestCase):
 
         # to test if multi-column empty cell is mistakely taken as footer
         self.assertEqual(len(columns[20].content), 2)
+
+        # test for bug regarding line 81 & 83 (commit f62cf2), 
+        # the bug is that rowspans records will not be updated if the loop exit before 
+        # all the rowspans records are reached
+        self.assertEqual(len(columns[80].content), 10)
+        self.assertEqual(columns[80].content[8], '3')
